@@ -1,11 +1,14 @@
 stages:
-  - test
   - analyze
   - archive
   - deploy
 
+.flutter_docker_image:
+  image: kitproject/flutter-build:v1-13-6
+
 unit_test:
-  stage: test
+  extends: .flutter_docker_image
+  stage: analyze
   script:
     - flutter test -v --coverage
     - lcov --list coverage/lcov.info
@@ -15,64 +18,28 @@ unit_test:
   artifacts:
     paths:
       - coverage
-  tags:
-    - mac-mini
 
 analyze:
+  extends: .flutter_docker_image
   stage: analyze
   script:
     - flutter analyze -v
   except:
     - master
-  tags:
-    - mac-mini
 
-archive_android_debug:
-  stage: archive
-  script:
-    - flutter build apk --debug --target="lib/main_mobile.dart" -v
-  except:
-    - master
-    - develop
-  artifacts:
-    expire_in: 60min
-    paths:
-      - build/app/outputs/apk/debug/app-debug.apk
-  tags:
-    - mac-mini
-
-archive_ios_debug:
-  stage: archive
-  script:
-    - flutter build ios --debug --target="lib/main_mobile.dart" -v
-    - cd build/ios/iphoneos/
-    - mkdir -p Payload
-    - mv Runner.app Payload/
-    - zip -ry Runner.ipa Payload
-  except:
-    - master
-    - develop
-  artifacts:
-    expire_in: 60min
-    paths:
-      - build/ios/iphoneos/Runner.ipa
-  tags:
-    - mac-mini
-
-archive_android_release:
+archive_android:
+  extends: .flutter_docker_image
   stage: archive
   script:
     - flutter build apk --target="lib/main_mobile.dart" -v
-  only:
-    - develop
+  except:
+    - master
   artifacts:
-    expire_in: 30min
+    expire_in: 1d
     paths:
       - build/app/outputs/apk/release/app-release.apk
-  tags:
-    - mac-mini
 
-archive_ios_release:
+archive_ios:
   stage: archive
   script:
     - flutter build ios --target="lib/main_mobile.dart" -v
@@ -80,10 +47,10 @@ archive_ios_release:
     - mkdir -p Payload
     - mv Runner.app Payload/
     - zip -ry Runner.ipa Payload
-  only:
-    - develop
+  except:
+    - master
   artifacts:
-    expire_in: 30min
+    expire_in: 1d
     paths:
       - build/ios/iphoneos/Runner.ipa
   tags:
@@ -96,11 +63,9 @@ archive_web_develop:
   only:
     - develop
   artifacts:
-    expire_in: 30min
+    expire_in: 1d
     paths:
       - build/web
-  tags:
-    - mac-mini
 
 deploy_mobile:
   stage: deploy
@@ -112,15 +77,13 @@ deploy_mobile:
     - cp -r build/ios/iphoneos/Runner.ipa .public
     - mv .public public
   dependencies:
-    - archive_android_release
-    - archive_ios_release
+    - archive_android
+    - archive_ios
   artifacts:
     paths:
       - public
   only:
     - develop
-  tags:
-    - mac-mini
 
 deploy_web_develop:
   stage: deploy
@@ -130,5 +93,3 @@ deploy_web_develop:
     - archive_web_develop
   only:
     - develop
-  tags:
-    - mac-mini
