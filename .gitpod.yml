@@ -1,5 +1,4 @@
-image:
-  file: .gitpod.Dockerfile
+image: kitproject/gitpod-flutter
 tasks:
   - init: >
       flutter pub get
