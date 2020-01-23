@@ -96,3 +96,5 @@ deploy_web_develop:
     - archive_web_develop
   only:
     - develop
+  tags:
+    - mac-mini
