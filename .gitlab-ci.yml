@@ -57,6 +57,7 @@ archive_ios:
     - mac-mini
 
 archive_web_develop:
+  extends: .flutter_docker_image
   stage: archive
   script:
     - flutter build web --target="lib/main_web.dart" -v
@@ -68,6 +69,7 @@ archive_web_develop:
       - build/web
 
 deploy_mobile:
+  extends: .flutter_docker_image
   stage: deploy
   script:
     - mkdir .public
@@ -86,6 +88,7 @@ deploy_mobile:
     - develop
 
 deploy_web_develop:
+  extends: .flutter_docker_image
   stage: deploy
   script:
     - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting
