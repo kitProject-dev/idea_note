@@ -4,7 +4,7 @@ stages:
   - deploy
 
 .flutter_docker_image:
-  image: kitproject/flutter-build:v1-13-6
+  image: kitproject/flutter:v1-13-6
 
 unit_test:
   extends: .flutter_docker_image
