@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/route.dart';
 import 'package:idea_note/screens/home_screen.dart';
+import 'package:idea_note/screens/note_edit_screen.dart';
+import 'package:idea_note/screens/note_view_screen.dart';
 import 'package:idea_note/theme.dart';
 
 class App extends StatelessWidget {
@@ -21,7 +23,13 @@ class App extends StatelessWidget {
         Widget widget;
         switch (settings.name) {
           case RoutePath.root:
-            widget = const HomeScreen();
+            widget = HomeScreen();
+            break;
+          case RoutePath.viewNote:
+            widget = NoteViewScreen(settings.arguments as int);
+            break;
+          case RoutePath.editNote:
+            widget = NoteEditScreen(settings.arguments as int);
             break;
         }
         return MaterialPageRoute<dynamic>(
