@@ -5,44 +5,49 @@ import 'package:idea_note/entity/note.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 
 class WebStorage extends Storage {
-  final List<MapEntry<String, Note>> _noteList = <MapEntry<String, Note>>[];
-  final _noteListController = StreamController<List<String>>.broadcast();
+  List<MapEntry<String, Note>> _notes;
+  final _notesController = StreamController<List<String>>.broadcast();
 
   @override
-  Stream<List<String>> get noteList => _noteListController.stream;
+  Stream<List<String>> get notes => _notesController.stream;
 
   @override
-  Future<void> loadList() async {
-    _noteListController.sink.add(_getTitleList());
+  Future<void> initialize() async {
+    await super.initialize();
+    await _loadNotes();
   }
 
   @override
   Future<Note> loadNote(int index) async {
-    if (index == -1) {
-      return Note('', '');
-    }
-    return _noteList[index].value;
+    return _notes[index].value;
   }
 
   @override
   Future<void> addNote(Note note) async {
-    note.title = '新規ノート${_noteList.length}';
-    _noteList.add(MapEntry(note.title, note));
-    _noteListController.sink.add(_getTitleList());
+    _notes.add(MapEntry(note.title, note));
+    _notesController.sink.add(_getTitleList());
   }
 
   @override
   Future<void> removeNote(int index) async {
-    _noteList.removeAt(index);
-    _noteListController.sink.add(_getTitleList());
+    _notes.removeAt(index);
+    _notesController.sink.add(_getTitleList());
+  }
+
+  Future<void> _loadNotes() async {
+    if (_notes != null) {
+      return;
+    }
+    _notes = <MapEntry<String, Note>>[];
+    _notesController.sink.add(_getTitleList());
   }
 
   List<String> _getTitleList() {
-    return _noteList.map((f) => f.key).toList();
+    return _notes.map((f) => f.key).toList();
   }
 
   @override
   void dispose() {
-    _noteListController.close();
+    _notesController.close();
   }
 }

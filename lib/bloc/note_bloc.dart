@@ -16,16 +16,16 @@ class NoteBloc {
       addController.stream.listen(noteModel.add),
       removeController.stream.listen(noteModel.remove),
     ];
-    return NoteBloc._(addController, removeController, noteModel.noteStream,
+    return NoteBloc._(addController, removeController, noteModel.notesStream,
         noteModel, subscriptions);
   }
 
-  NoteBloc._(this.addNote, this.removeNote, this.noteStream, this._noteModel,
+  NoteBloc._(this.addNote, this.removeNote, this.notesStream, this._noteModel,
       this._subscriptions);
 
   final Sink<Note> addNote;
   final Sink<int> removeNote;
-  final Stream<List<String>> noteStream;
+  final Stream<List<String>> notesStream;
   final NotesModel _noteModel;
   final List<StreamSubscription<dynamic>> _subscriptions;
 
