@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
         final noteBloc = Provider.of<NoteBloc>(context);
         final themeData = Theme.of(context);
         return StreamBuilder(
-          stream: noteBloc.noteStream,
+          stream: noteBloc.notesStream,
           initialData: const <String>[],
           builder: (context, snapShot) {
             final noteList = snapShot.data as List<String>;
