@@ -22,9 +22,6 @@ class App extends StatelessWidget {
       onGenerateRoute: (settings) {
         Widget widget;
         switch (settings.name) {
-          case RoutePath.root:
-            widget = HomeScreen();
-            break;
           case RoutePath.viewNote:
             widget = NoteViewScreen(settings.arguments as int);
             break;
@@ -38,6 +35,7 @@ class App extends StatelessWidget {
           },
         );
       },
+      home: HomeScreen(),
     );
   }
 }
