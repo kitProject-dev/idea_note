@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:idea_note/entity/note.dart';
-import 'package:provider/provider.dart';
 
 class NoteEditBody extends StatefulWidget {
-  const NoteEditBody();
+  const NoteEditBody(this._note);
+
+  final Note _note;
 
   @override
   _NoteEditBodyState createState() => _NoteEditBodyState();
@@ -28,7 +29,7 @@ class _NoteEditBodyState extends State<NoteEditBody> {
 
   @override
   Widget build(BuildContext context) {
-    final note = Provider.of<Note>(context);
+    final note = widget._note;
     final themeData = Theme.of(context);
     _textEditingController.text = note.content;
     return Stack(
