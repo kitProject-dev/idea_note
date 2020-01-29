@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:idea_note/entity/note.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 
-class NoteModel {
+class NoteModel with ChangeNotifier {
   factory NoteModel(Storage storage) {
     return NoteModel._(storage);
   }
@@ -12,13 +13,24 @@ class NoteModel {
   NoteModel._(this._storage);
 
   final Storage _storage;
+  Note _note;
 
-  Future<Note> load(int index) async {
+  Note get note => _note;
+
+  Future<bool> load(int index) async {
     if (index == -1) {
-      return Note(_createTitle(), '');
+      _note = Note(_createTitle(), '');
+      notifyListeners();
+      return true;
     }
-    final note = await _storage.loadNote(index);
-    return note;
+    _note = await _storage.loadNote(index);
+    notifyListeners();
+    return true;
+  }
+
+  void changeTitle() {
+    _note = Note(_createTitle(), _note.content);
+    notifyListeners();
   }
 
   String _createTitle() {
@@ -29,6 +41,4 @@ class NoteModel {
         ' × '
         '${_wordsB[random.nextInt(_wordsB.length)]}';
   }
-
-  void dispose() {}
 }

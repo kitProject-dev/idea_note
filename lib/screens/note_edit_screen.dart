@@ -18,17 +18,16 @@ class NoteEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final storage = Provider.of<Storage>(context);
     final noteModel = NoteModel(storage);
-    return FutureBuilder<Note>(
-      initialData: null,
+    return FutureBuilder<bool>(
+      initialData: false,
       future: noteModel.load(_index),
       builder: (context, snapshot) {
-        final note = snapshot.data;
-        return note == null
+        return !snapshot.data
             ? Container()
             : MultiProvider(
                 providers: [
-                  Provider<Note>.value(
-                    value: note,
+                  ChangeNotifierProvider<NoteModel>.value(
+                    value: noteModel,
                   ),
                   ChangeNotifierProvider<TimeCountModel>(
                     create: (_) => TimeCountModel()..create(),
@@ -36,13 +35,16 @@ class NoteEditScreen extends StatelessWidget {
                 ],
                 child: Builder(
                   builder: (context) {
-                    final note = Provider.of<Note>(context);
                     return Scaffold(
                       appBar: AppBar(
                         title: Row(
                           children: <Widget>[
                             Expanded(
-                              child: SelectableText(note.title),
+                              child: Selector<NoteModel, Note>(
+                                selector: (context, model) => model.note,
+                                builder: (context, note, child) =>
+                                    SelectableText(note.title),
+                              ),
                             ),
                             Selector<TimeCountModel, String>(
                               selector: (context, model) => model.timeStr,
@@ -53,7 +55,10 @@ class NoteEditScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      body: const NoteEditBody(),
+                      body: Selector<NoteModel, Note>(
+                        selector: (context, model) => model.note,
+                        builder: (context, note, child) => NoteEditBody(note),
+                      ),
                       floatingActionButton: _FloatingActionButton(),
                     );
                   },
@@ -67,7 +72,7 @@ class NoteEditScreen extends StatelessWidget {
 class _FloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final note = Provider.of<Note>(context);
+    final noteModel = Provider.of<NoteModel>(context);
     final timeCountModel = Provider.of<TimeCountModel>(context);
     final appLocalizationsLabels = AppLocalizations.of(context);
     return SpeedDial(
@@ -77,7 +82,7 @@ class _FloatingActionButton extends StatelessWidget {
           child: Icon(FontAwesomeIcons.save),
           backgroundColor: Colors.red,
           label: appLocalizationsLabels.save,
-          onTap: () => Navigator.of(context).pop(note),
+          onTap: () => Navigator.of(context).pop(noteModel.note),
         ),
         SpeedDialChild(
           child: Icon(timeCountModel.isRunning
@@ -92,6 +97,12 @@ class _FloatingActionButton extends StatelessWidget {
                 ? timeCountModel.stop()
                 : timeCountModel.start();
           },
+        ),
+        SpeedDialChild(
+          child: Icon(FontAwesomeIcons.book),
+          backgroundColor: Colors.red,
+          label: appLocalizationsLabels.changeTitle,
+          onTap: noteModel.changeTitle,
         ),
       ],
     );
