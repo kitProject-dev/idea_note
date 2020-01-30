@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:idea_note/entity/note.dart';
@@ -22,15 +23,15 @@ class MobileStorage extends Storage {
   Future<Note> loadNote(int index) async {
     final notesDirectory = await _notesDirectory;
     final noteFile = File('${notesDirectory.path}/${_notes[index]}');
-    final contents = await noteFile.readAsString();
-    return Note(_notes[index], contents);
+    final jsonStr = await noteFile.readAsString();
+    return Note.fromJson(jsonDecode(jsonStr) as Map<String, dynamic>);
   }
 
   @override
   Future<void> addNote(Note note) async {
     final notesDirectory = await _notesDirectory;
     final noteFile = File('${notesDirectory.path}/${note.title}');
-    await noteFile.writeAsString(note.content);
+    await noteFile.writeAsString(jsonEncode(note.toJson()));
     _notes.add(note.title);
     _notesController.sink.add(_notes);
   }
