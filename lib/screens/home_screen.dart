@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       child: Text(
                         noteList[index],
                         style: TextStyle(
-                          fontSize: themeData.textTheme.body1.fontSize,
+                          fontSize: themeData.textTheme.bodyText2.fontSize,
                         ),
                       ),
                     ),

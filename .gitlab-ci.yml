@@ -4,7 +4,15 @@ stages:
   - deploy
 
 .flutter_docker_image:
-  image: kitproject/flutter:v1-13-6
+  image: kitproject/flutter:beta
+  before_script:
+    - flutter version 1.14.6 --force
+
+.flutter_sdk:
+  before_script:
+    - flutter version 1.14.6 --force
+  tags:
+    - mac-mini
 
 unit_test:
   extends: .flutter_docker_image
@@ -40,6 +48,7 @@ archive_android:
       - build/app/outputs/apk/release/app-release.apk
 
 archive_ios:
+  extends: .flutter_sdk
   stage: archive
   script:
     - flutter build ios --target="lib/main_mobile.dart" -v
@@ -53,8 +62,6 @@ archive_ios:
     expire_in: 1d
     paths:
       - build/ios/iphoneos/Runner.ipa
-  tags:
-    - mac-mini
 
 archive_web_develop:
   extends: .flutter_docker_image
@@ -88,7 +95,7 @@ deploy_mobile:
     - develop
 
 deploy_web_develop:
-  extends: .flutter_docker_image
+  extends: .flutter_sdk
   stage: deploy
   script:
     - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting
@@ -96,5 +103,3 @@ deploy_web_develop:
     - archive_web_develop
   only:
     - develop
-  tags:
-    - mac-mini
