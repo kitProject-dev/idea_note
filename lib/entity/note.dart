@@ -5,7 +5,7 @@ class Note {
       : title = json[_keyTitle] as String,
         content = json[_keyContent] as String;
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         _keyTitle: title,
         _keyContent: content,
       };

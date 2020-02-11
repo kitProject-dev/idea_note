@@ -30,9 +30,9 @@ abstract class Storage {
       return;
     }
     final loadData = await rootBundle.loadString('assets/json/words.json');
-    _wordsA = <String>[]..addAll(
-        (json.decode(loadData)['words_a'] as List<dynamic>).cast<String>());
-    _wordsB = <String>[]..addAll(
-        (json.decode(loadData)['words_b'] as List<dynamic>).cast<String>());
+    _wordsA =
+        (json.decode(loadData)['words_a'] as List<dynamic>).cast<String>();
+    _wordsB =
+        (json.decode(loadData)['words_b'] as List<dynamic>).cast<String>();
   }
 }

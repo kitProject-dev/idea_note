@@ -46,7 +46,7 @@ class _NoteEditBodyState extends State<NoteEditBody> {
             focusNode: _focus,
             autofocus: true,
             maxLines: null,
-            style: themeData.textTheme.body1,
+            style: themeData.textTheme.bodyText2,
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: const EdgeInsets.all(0),
