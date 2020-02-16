@@ -5,6 +5,7 @@ import 'package:idea_note/route.dart';
 import 'package:idea_note/screens/home_screen.dart';
 import 'package:idea_note/screens/note_edit_screen.dart';
 import 'package:idea_note/screens/note_view_screen.dart';
+import 'package:idea_note/screens/splash_screen.dart';
 import 'package:idea_note/theme.dart';
 
 class App extends StatelessWidget {
@@ -22,6 +23,9 @@ class App extends StatelessWidget {
       onGenerateRoute: (settings) {
         Widget widget;
         switch (settings.name) {
+          case RoutePath.home:
+            widget = HomeScreen();
+            break;
           case RoutePath.viewNote:
             widget = NoteViewScreen(settings.arguments as int);
             break;
@@ -35,7 +39,7 @@ class App extends StatelessWidget {
           },
         );
       },
-      home: HomeScreen(),
+      home: SplashScreen(),
     );
   }
 }
