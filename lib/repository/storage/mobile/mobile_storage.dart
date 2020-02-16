@@ -64,7 +64,10 @@ class MobileStorage extends Storage {
     }
     noteList
         .sort((a, b) => a.lastModifiedSync().compareTo(b.lastModifiedSync()));
-    _notes = noteList.map((f) => f.path.split('/').last) as List<String>;
+    _notes = <String>[];
+    noteList.map((f) => f.path.split('/').last).forEach((name) {
+      _notes.add(name);
+    });
     _notesController.sink.add(_notes);
   }
 
