@@ -2,6 +2,7 @@ include: package:pedantic/analysis_options.yaml
 analyzer:
   exclude:
     - "lib/localization.g.dart"
+    - "lib/generated_plugin_registrant.dart"
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
