@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/route.dart';
 import 'package:idea_note/screens/home_screen.dart';
+import 'package:idea_note/screens/initial_screen.dart';
 import 'package:idea_note/screens/note_edit_screen.dart';
 import 'package:idea_note/screens/note_view_screen.dart';
 import 'package:idea_note/screens/splash_screen.dart';
@@ -23,6 +24,9 @@ class App extends StatelessWidget {
       onGenerateRoute: (settings) {
         Widget widget;
         switch (settings.name) {
+          case RoutePath.initial:
+            widget = InitialScreen();
+            break;
           case RoutePath.home:
             widget = HomeScreen();
             break;
