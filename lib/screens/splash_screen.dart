@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:idea_note/config/assets.dart';
-import 'package:idea_note/config/preferences_key.dart';
+import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/route.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:package_info_wrapper/package_info_wrapper.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreen extends State<SplashScreen> {
   bool _isSetUpCompleted = false;
-  bool _isLoadPrefs = false;
+  bool _isLoadFinished = false;
   bool _isSplashTimeEnds = false;
   int _numberOfStartUps = 0;
   Timer _timer;
@@ -24,9 +25,6 @@ class _SplashScreen extends State<SplashScreen> {
     super.initState();
     _timer = Timer(const Duration(seconds: 2), () {
       _isSplashTimeEnds = true;
-      _openScreen();
-    });
-    _getPrefs().then((_) {
       _openScreen();
     });
   }
@@ -39,16 +37,20 @@ class _SplashScreen extends State<SplashScreen> {
     super.dispose();
   }
 
-  Future<void> _getPrefs() async {
-    final prefs = await SharedPreferences.getInstance();
-    _numberOfStartUps = prefs.getInt(PreferencesKey.numberOfStartUps) ?? 0;
-    await prefs.setInt(PreferencesKey.numberOfStartUps, _numberOfStartUps + 1);
-    _isSetUpCompleted = prefs.getBool(PreferencesKey.setUpCompleted) ?? false;
-    _isLoadPrefs = true;
+  Future<void> _loading() async {
+    final settingsModel = Provider.of<SettingsModel>(context, listen: false);
+    await settingsModel.initialize();
+    final packageInfo = await PackageInfoWrapper.fromPlatform();
+    await settingsModel.setVersion(
+        packageInfo.version, packageInfo.buildNumber);
+    _numberOfStartUps = settingsModel.getNumberOfStartUps();
+    await settingsModel.incrementNumberOfStartUps();
+    _isSetUpCompleted = settingsModel.isSetUpCompleted();
+    _isLoadFinished = true;
   }
 
   void _openScreen() {
-    if (!_isLoadPrefs || !_isSplashTimeEnds) {
+    if (!_isLoadFinished || !_isSplashTimeEnds) {
       return;
     }
     if (_numberOfStartUps > 0 && _isSetUpCompleted) {
@@ -60,6 +62,9 @@ class _SplashScreen extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _loading().then((_) {
+      _openScreen();
+    });
     return Container(
       color: Colors.white,
       child: Center(

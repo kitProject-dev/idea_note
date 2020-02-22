@@ -18,7 +18,7 @@ class _NoteEditBodyState extends State<NoteEditBody> {
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController(); // <- こんな感じ
+    _textEditingController = TextEditingController();
   }
 
   @override

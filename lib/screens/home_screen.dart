@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:idea_note/bloc/note_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:idea_note/entity/note.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 import 'package:idea_note/route.dart';
+import 'package:idea_note/widgets/home_drawer.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,6 +23,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: SelectableText(AppLocalizations.of(context).title),
         ),
+        drawer: HomeDrawer(),
         body: _buildBody(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
