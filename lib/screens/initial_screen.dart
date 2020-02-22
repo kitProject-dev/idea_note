@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:idea_note/config/preferences_key.dart';
+import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/route.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -45,8 +45,9 @@ class _InitialScreenState extends State<InitialScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: () async {
-                    final prefs = await SharedPreferences.getInstance();
-                    await prefs.setBool(PreferencesKey.setUpCompleted, true);
+                    final settingsModel =
+                        Provider.of<SettingsModel>(context, listen: false);
+                    await settingsModel.setUpCompleted();
                     await Navigator.of(context)
                         .pushReplacementNamed(RoutePath.home);
                   },
