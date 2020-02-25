@@ -3,16 +3,19 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:idea_note/entity/note.dart';
+import 'package:idea_note/model/setting_title_model.dart';
+import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 
 class NoteModel with ChangeNotifier {
-  factory NoteModel(Storage storage) {
-    return NoteModel._(storage);
+  factory NoteModel(Storage storage, SettingsModel settingsModel) {
+    return NoteModel._(storage, settingsModel);
   }
 
-  NoteModel._(this._storage);
+  NoteModel._(this._storage, this._settingsModel);
 
   final Storage _storage;
+  final SettingsModel _settingsModel;
   Note _note;
 
   Note get note => _note;
@@ -34,8 +37,10 @@ class NoteModel with ChangeNotifier {
   }
 
   String _createTitle() {
-    final _wordsA = _storage.wordsA;
-    final _wordsB = _storage.wordsB;
+    final _wordsA = _settingsModel.getWords(WordsType.a).toList()
+      ..removeWhere((item) => item.isEmpty);
+    final _wordsB = _settingsModel.getWords(WordsType.b).toList()
+      ..removeWhere((item) => item.isEmpty);
     final random = Random();
     return '${_wordsA[random.nextInt(_wordsA.length)]}'
         ' × '

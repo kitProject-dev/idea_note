@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:idea_note/entity/note.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/note_model.dart';
+import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/model/time_count_model.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 import 'package:idea_note/widgets/note_edit_body.dart';
@@ -17,7 +18,8 @@ class NoteEditScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storage = Provider.of<Storage>(context);
-    final noteModel = NoteModel(storage);
+    final settingsModel = Provider.of<SettingsModel>(context);
+    final noteModel = NoteModel(storage, settingsModel);
     return FutureBuilder<bool>(
       initialData: false,
       future: noteModel.load(_index),
