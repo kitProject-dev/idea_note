@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:idea_note/model/note_model.dart';
+import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/repository/storage/storage.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +18,8 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
   @override
   Widget build(BuildContext context) {
     final storage = Provider.of<Storage>(context);
-    final noteModel = NoteModel(storage);
+    final settingsModel = Provider.of<SettingsModel>(context);
+    final noteModel = NoteModel(storage, settingsModel);
     return FutureBuilder<bool>(
       initialData: false,
       future: noteModel.load(widget._index),

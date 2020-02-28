@@ -15,7 +15,6 @@ class MobileStorage extends Storage {
 
   @override
   Future<void> initialize() async {
-    await super.initialize();
     await _loadNotes();
   }
 

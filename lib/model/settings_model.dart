@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:idea_note/config/preferences_key.dart';
+import 'package:idea_note/config/words.dart';
+import 'package:idea_note/model/setting_title_model.dart';
 import 'package:idea_note/repository/setting/setting.dart';
 
 class SettingsModel {
@@ -50,6 +52,32 @@ class SettingsModel {
 
   int getNumberOfStartUps() {
     return _setting.getValue(PreferencesKey.numberOfStartUps) as int ?? 0;
+  }
+
+  Future<bool> clearWords() async {
+    final resultA =
+        await _setting.setValue(PreferencesKey.wordsA, Words.defaultA);
+    final resultB =
+        await _setting.setValue(PreferencesKey.wordsB, Words.defaultB);
+    return resultA && resultB;
+  }
+
+  Future<bool> setWords(List<String> wordsA, List<String> wordsB) async {
+    final resultA = await _setting.setValue(PreferencesKey.wordsA, wordsA);
+    final resultB = await _setting.setValue(PreferencesKey.wordsB, wordsB);
+    return resultA && resultB;
+  }
+
+  List<String> getWords(WordsType wordsType) {
+    switch (wordsType) {
+      case WordsType.a:
+        return _setting.getValue(PreferencesKey.wordsA) as List<String> ??
+            Words.defaultA;
+      case WordsType.b:
+        return _setting.getValue(PreferencesKey.wordsB) as List<String> ??
+            Words.defaultB;
+    }
+    return [];
   }
 
   void dispose() {}

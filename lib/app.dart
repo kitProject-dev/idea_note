@@ -8,6 +8,7 @@ import 'package:idea_note/screens/home_screen.dart';
 import 'package:idea_note/screens/initial_screen.dart';
 import 'package:idea_note/screens/note_edit_screen.dart';
 import 'package:idea_note/screens/note_view_screen.dart';
+import 'package:idea_note/screens/setting_title_screen.dart';
 import 'package:idea_note/screens/settings_screen.dart';
 import 'package:idea_note/screens/splash_screen.dart';
 import 'package:idea_note/theme.dart';
@@ -50,6 +51,9 @@ class App extends StatelessWidget {
               break;
             case RoutePath.editNote:
               widget = NoteEditScreen(settings.arguments as int);
+              break;
+            case RoutePath.settingTitle:
+              widget = SettingTitleScreen();
               break;
           }
           return MaterialPageRoute<dynamic>(

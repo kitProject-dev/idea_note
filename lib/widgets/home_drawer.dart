@@ -22,9 +22,10 @@ class HomeDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.cog),
-              title: const Text('Setting'),
+              title: const Text('Title setting'),
               onTap: () {
-                Navigator.of(context).pushNamed(RoutePath.settings);
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(RoutePath.settingTitle);
               },
             ),
           ],
