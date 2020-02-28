@@ -349,7 +349,7 @@ packages:
       name: package_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.9.1"
   package_info:
     dependency: transitive
     description:
@@ -362,7 +362,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "3cd93bfdd55bc04384639d2f88f4a01b9fe85b57"
+      resolved-ref: b5680c2e15ee3c05f1816ffeb4767eee3543df12
       url: "https://gitlab.com/kitProject/package_info_wrapper.git"
     source: git
     version: "0.0.1"
@@ -510,7 +510,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.4+7"
+    version: "0.9.5"
   source_span:
     dependency: transitive
     description:
@@ -538,7 +538,7 @@ packages:
       name: stream_transform
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.0"
   string_scanner:
     dependency: transitive
     description:
@@ -610,5 +610,5 @@ packages:
     source: hosted
     version: "2.2.0"
 sdks:
-  dart: ">=2.6.0 <3.0.0"
+  dart: ">=2.7.0 <3.0.0"
   flutter: "1.14.6"
