@@ -18,7 +18,7 @@ class SettingsModel {
     await _setting.initialize();
   }
 
-  Future<bool> setVersion(String version, String buildNumber) async {
+  Future<bool> setVersion(String version, int buildNumber) async {
     final resultVersion =
         await _setting.setValue(PreferencesKey.version, version);
     final resultBuildNumber =
@@ -30,8 +30,8 @@ class SettingsModel {
     return _setting.getValue(PreferencesKey.version) as String ?? '';
   }
 
-  String getBuildNumber() {
-    return _setting.getValue(PreferencesKey.buildNumber) as String ?? '';
+  int getBuildNumber() {
+    return _setting.getValue(PreferencesKey.buildNumber) as int ?? -1;
   }
 
   Future<bool> setUpCompleted() async {

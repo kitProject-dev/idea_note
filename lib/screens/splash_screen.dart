@@ -41,12 +41,19 @@ class _SplashScreen extends State<SplashScreen> {
     final settingsModel = Provider.of<SettingsModel>(context, listen: false);
     await settingsModel.initialize();
     final packageInfo = await PackageInfoWrapper.fromPlatform();
+    await _upgradeApp(
+        settingsModel.getBuildNumber(), packageInfo.buildNumber);
     await settingsModel.setVersion(
         packageInfo.version, packageInfo.buildNumber);
     _numberOfStartUps = settingsModel.getNumberOfStartUps();
     await settingsModel.incrementNumberOfStartUps();
     _isSetUpCompleted = settingsModel.isSetUpCompleted();
     _isLoadFinished = true;
+  }
+
+  Future<void> _upgradeApp(num oldVersion, int newVersion) async {
+    print(oldVersion.toString());
+    print(newVersion.toString());
   }
 
   void _openScreen() {
