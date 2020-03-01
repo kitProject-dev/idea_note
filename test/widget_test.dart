@@ -1,21 +1,22 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:idea_note/app.dart';
-import 'package:idea_note/repository/setting/setting.dart';
-import 'package:idea_note/repository/storage/storage.dart';
+import 'package:idea_note/repository/note/note_repository.dart';
+import 'package:idea_note/repository/setting/setting_repository.dart';
 import 'package:provider/provider.dart';
 
-import 'repository/storage/test_storage.dart';
+import 'repository/note/test_note_repository.dart';
 
 Future<void> _createApp(WidgetTester tester) async {
   await tester.pumpWidget(
     MultiProvider(
       providers: [
-        Provider<Storage>(
-          create: (_) => TestStorage(),
+        Provider<NoteRepository>(
+          create: (_) => TestNoteRepository(),
           dispose: (context, value) => value.dispose(),
         ),
-        Provider<Setting>.value(
-          value: Setting(),
+        Provider<SettingRepository>(
+          create: (_) => SettingRepository(),
+          dispose: (context, value) => value.dispose(),
         ),
       ],
       child: App(),

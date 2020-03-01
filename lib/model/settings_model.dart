@@ -1,84 +1,95 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:idea_note/config/preferences_key.dart';
 import 'package:idea_note/config/words.dart';
-import 'package:idea_note/model/setting_title_model.dart';
-import 'package:idea_note/repository/setting/setting.dart';
+import 'package:idea_note/repository/setting/setting_repository.dart';
 
-class SettingsModel {
-  factory SettingsModel(Setting setting) {
-    return SettingsModel._(setting);
+class SettingsModel with ChangeNotifier {
+  factory SettingsModel(SettingRepository settingRepository) {
+    return SettingsModel._(settingRepository);
   }
 
-  SettingsModel._(this._setting);
+  SettingsModel._(this._settingRepository);
 
-  final Setting _setting;
+  final SettingRepository _settingRepository;
 
   Future<void> initialize() async {
-    await _setting.initialize();
+    await _settingRepository.initialize();
   }
 
   Future<bool> setVersion(String version, int buildNumber) async {
     final resultVersion =
-        await _setting.setValue(PreferencesKey.version, version);
-    final resultBuildNumber =
-        await _setting.setValue(PreferencesKey.buildNumber, buildNumber);
+        await _settingRepository.setValue(PreferencesKey.version, version);
+    final resultBuildNumber = await _settingRepository.setValue(
+        PreferencesKey.buildNumber, buildNumber);
+    notifyListeners();
     return resultVersion && resultBuildNumber;
   }
 
   String getVersion() {
-    return _setting.getValue(PreferencesKey.version) as String ?? '';
+    return _settingRepository.getValue(PreferencesKey.version) as String ?? '';
   }
 
   int getBuildNumber() {
-    return _setting.getValue(PreferencesKey.buildNumber) as int ?? -1;
+    return _settingRepository.getValue(PreferencesKey.buildNumber) as int ?? -1;
   }
 
   Future<bool> setUpCompleted() async {
-    final result = await _setting.setValue(PreferencesKey.setUpCompleted, true);
+    final result =
+        await _settingRepository.setValue(PreferencesKey.setUpCompleted, true);
+    notifyListeners();
     return result;
   }
 
   bool isSetUpCompleted() {
-    return _setting.getValue(PreferencesKey.setUpCompleted) as bool ?? false;
+    return _settingRepository.getValue(PreferencesKey.setUpCompleted) as bool ??
+        false;
   }
 
   Future<bool> incrementNumberOfStartUps() async {
     final numberOfStartUps = getNumberOfStartUps();
-    final result = await _setting.setValue(
+    final result = await _settingRepository.setValue(
         PreferencesKey.numberOfStartUps, numberOfStartUps + 1);
+    notifyListeners();
     return result;
   }
 
   int getNumberOfStartUps() {
-    return _setting.getValue(PreferencesKey.numberOfStartUps) as int ?? 0;
+    return _settingRepository.getValue(PreferencesKey.numberOfStartUps)
+            as int ??
+        0;
   }
 
   Future<bool> clearWords() async {
-    final resultA =
-        await _setting.setValue(PreferencesKey.wordsA, Words.defaultA);
-    final resultB =
-        await _setting.setValue(PreferencesKey.wordsB, Words.defaultB);
+    final resultA = await _settingRepository.setValue(
+        PreferencesKey.wordsA, Words.defaultA);
+    final resultB = await _settingRepository.setValue(
+        PreferencesKey.wordsB, Words.defaultB);
+    notifyListeners();
     return resultA && resultB;
   }
 
   Future<bool> setWords(List<String> wordsA, List<String> wordsB) async {
-    final resultA = await _setting.setValue(PreferencesKey.wordsA, wordsA);
-    final resultB = await _setting.setValue(PreferencesKey.wordsB, wordsB);
+    final resultA =
+        await _settingRepository.setValue(PreferencesKey.wordsA, wordsA);
+    final resultB =
+        await _settingRepository.setValue(PreferencesKey.wordsB, wordsB);
+    notifyListeners();
     return resultA && resultB;
   }
 
   List<String> getWords(WordsType wordsType) {
     switch (wordsType) {
       case WordsType.a:
-        return _setting.getValue(PreferencesKey.wordsA) as List<String> ??
+        return _settingRepository.getValue(PreferencesKey.wordsA)
+                as List<String> ??
             Words.defaultA;
       case WordsType.b:
-        return _setting.getValue(PreferencesKey.wordsB) as List<String> ??
+        return _settingRepository.getValue(PreferencesKey.wordsB)
+                as List<String> ??
             Words.defaultB;
     }
     return [];
   }
-
-  void dispose() {}
 }

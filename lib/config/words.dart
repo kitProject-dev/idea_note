@@ -100,3 +100,5 @@ class Words {
     ],
   };
 }
+
+enum WordsType { a, b }
