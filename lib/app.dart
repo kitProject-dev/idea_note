@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:idea_note/config/route.dart';
+import 'package:idea_note/config/theme.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
-import 'package:idea_note/repository/setting/setting.dart';
-import 'package:idea_note/route.dart';
-import 'package:idea_note/screens/home_screen.dart';
-import 'package:idea_note/screens/initial_screen.dart';
-import 'package:idea_note/screens/note_edit_screen.dart';
-import 'package:idea_note/screens/note_view_screen.dart';
-import 'package:idea_note/screens/setting_title_screen.dart';
-import 'package:idea_note/screens/settings_screen.dart';
-import 'package:idea_note/screens/splash_screen.dart';
-import 'package:idea_note/theme.dart';
+import 'package:idea_note/repository/setting/setting_repository.dart';
+import 'package:idea_note/screen/home_screen.dart';
+import 'package:idea_note/screen/initial_screen.dart';
+import 'package:idea_note/screen/edit_note_screen.dart';
+import 'package:idea_note/screen/view_note_screen.dart';
+import 'package:idea_note/screen/setting_title_screen.dart';
+import 'package:idea_note/screen/settings_screen.dart';
+import 'package:idea_note/screen/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
@@ -19,9 +19,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<SettingsModel>.value(
+        ChangeNotifierProvider<SettingsModel>.value(
           value: SettingsModel(
-            Provider.of<Setting>(context),
+            Provider.of<SettingRepository>(context),
           ),
         ),
       ],
@@ -44,13 +44,13 @@ class App extends StatelessWidget {
               widget = HomeScreen();
               break;
             case RoutePath.settings:
-              widget = const SettingsScreen();
+              widget = SettingsScreen();
               break;
             case RoutePath.viewNote:
-              widget = NoteViewScreen(settings.arguments as int);
+              widget = ViewNoteScreen(settings.arguments as int);
               break;
             case RoutePath.editNote:
-              widget = NoteEditScreen(settings.arguments as int);
+              widget = EditNoteScreen(settings.arguments as int);
               break;
             case RoutePath.settingTitle:
               widget = SettingTitleScreen();
