@@ -31,5 +31,3 @@ class SettingTitleModel {
   List<String> _wordsA = Words.defaultA;
   List<String> _wordsB = Words.defaultB;
 }
-
-enum WordsType { a, b }
