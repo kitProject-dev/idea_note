@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:idea_note/config/assets.dart';
+import 'package:idea_note/config/config.dart';
 import 'package:idea_note/config/route.dart';
 import 'package:idea_note/model/settings_model.dart';
+import 'package:idea_note/repository/note/note_repository.dart';
 import 'package:package_info_wrapper/package_info_wrapper.dart';
 import 'package:provider/provider.dart';
 
@@ -58,8 +60,14 @@ class _SplashScreen extends State<SplashScreen> {
   }
 
   Future<void> _upgradeApp(num oldVersion, int newVersion) async {
-    print(oldVersion.toString());
-    print(newVersion.toString());
+    print('Old app version: ${oldVersion.toString()}');
+    print('New app version: ${newVersion.toString()}');
+    final noteRepository = Provider.of<NoteRepository>(context, listen: false);
+    await noteRepository.initialize(Config.dbVersion,
+        (db, oldVersion, newVersion) {
+      print('Old db version: ${oldVersion.toString()}');
+      print('New db version: ${newVersion.toString()}');
+    });
   }
 
   void _openScreen() {

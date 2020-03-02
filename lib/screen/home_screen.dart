@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
     final noteRepository = Provider.of<NoteRepository>(context);
     return FutureBuilder<bool>(
       initialData: false,
-      future: noteRepository.initialize(),
+      future: noteRepository.loadNotes(),
       builder: (context, snapshot) {
         return !snapshot.data
             ? Container()
