@@ -36,7 +36,9 @@ class _EditNoteBodyBodyState extends State<EditNoteBody> {
           children: <Widget>[
             GestureDetector(
               behavior: HitTestBehavior.translucent,
-              child: Container(),
+              child: Container(
+                color: themeData.cardColor,
+              ),
               onTap: () => FocusScope.of(context).requestFocus(_focus),
             ),
             Scrollbar(
@@ -46,10 +48,10 @@ class _EditNoteBodyBodyState extends State<EditNoteBody> {
                 focusNode: _focus,
                 autofocus: true,
                 maxLines: null,
-                style: themeData.textTheme.bodyText2,
+                style: themeData.textTheme.body1,
                 decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(5),
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(0),
                   isDense: true,
                 ),
               ),

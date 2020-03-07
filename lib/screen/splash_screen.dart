@@ -79,7 +79,7 @@ class _SplashScreen extends State<SplashScreen> {
         settingsModel.isSetUpCompleted()) {
       Navigator.of(context).pushReplacementNamed(RoutePath.home);
     } else {
-      Navigator.of(context).pushReplacementNamed(RoutePath.initial);
+      Navigator.of(context).pushReplacementNamed(RoutePath.tutorial);
     }
   }
 }

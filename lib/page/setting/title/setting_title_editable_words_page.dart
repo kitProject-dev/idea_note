@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:idea_note/config/words.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/setting_title_model.dart';
+import 'package:idea_note/widget/setting_title/setting_title_content.dart';
+import 'package:idea_note/widget/setting_title/setting_title_double_button.dart';
 import 'package:provider/provider.dart';
 
 class SettingTitleEditableWordsPage extends StatelessWidget {
@@ -21,54 +23,46 @@ class SettingTitleEditableWordsPage extends StatelessWidget {
       child: Scrollbar(
         child: Column(
           children: [
-            Text(AppLocalizations.of(context).titleSettingEditableWords),
+            SettingTitleContent(
+                AppLocalizations.of(context).titleSettingEditableWords),
             Expanded(
               child: ListView.builder(
                 itemCount: words.length,
                 itemBuilder: (context, index) {
-                  return TextFormField(
-                    initialValue: words[index],
-                    decoration: InputDecoration(
+                  return Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: TextFormField(
+                      style: themeData.textTheme.body1,
+                      initialValue: words[index],
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
                         labelText: '${AppLocalizations.of(context).word}'
-                            ' ${index + 1}'),
-                    onChanged: (value) {
-                      words[index] = value;
-                    },
+                            ' ${index + 1}',
+                        hintText: '${AppLocalizations.of(context).word}'
+                            ' ${index + 1}',
+                      ),
+                      onChanged: (value) {
+                        words[index] = value;
+                      },
+                    ),
                   );
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  child: Text(AppLocalizations.of(context).prev,
-                      style: themeData.textTheme.button),
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    _pageController.previousPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease);
-                  },
-                ),
-                RaisedButton(
-                  child: Text(AppLocalizations.of(context).next,
-                      style: themeData.textTheme.button),
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    settingTitleModel.setWords(_wordsType, words);
-                    _pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease);
-                  },
-                ),
-              ],
+            SettingTitleDoubleButton(
+              AppLocalizations.of(context).prev,
+              () {
+                _pageController.previousPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
+              AppLocalizations.of(context).next,
+              () {
+                settingTitleModel.setWords(_wordsType, words);
+                _pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
             ),
           ],
         ),
