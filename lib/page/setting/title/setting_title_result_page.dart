@@ -41,7 +41,7 @@ class SettingTitleResultPage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 2.5, right: 5),
                       child: SettingTitleResultList(
-                        settingTitleModel.getWords(WordsType.a),
+                        settingTitleModel.getWords(WordsType.b),
                       ),
                     ),
                   ),
