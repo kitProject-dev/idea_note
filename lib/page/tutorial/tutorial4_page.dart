@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:idea_note/config/assets.dart';
 import 'package:idea_note/config/route.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:provider/provider.dart';
 
 class Tutorial4Page extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
@@ -16,16 +14,15 @@ class Tutorial4Page extends StatelessWidget {
       color: Colors.deepOrange[300],
       child: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 100, bottom: 20),
-            child: Image.asset(Assets.splash),
-          ),
           Expanded(
             child: Center(
-              child: Text(
-                AppLocalizations.of(context).tutorialText4,
-                style: themeData.primaryTextTheme.body1
-                    .copyWith(color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 5, left: 5),
+                child: Text(
+                  AppLocalizations.of(context).tutorialText4,
+                  style: themeData.primaryTextTheme.title
+                      .copyWith(color: Colors.white),
+                ),
               ),
             ),
           ),

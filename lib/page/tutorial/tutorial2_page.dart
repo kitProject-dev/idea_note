@@ -16,15 +16,18 @@ class Tutorial2Page extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 100, bottom: 20),
-            child: Image.asset(Assets.splash),
+            padding: const EdgeInsets.only(top: 200, bottom: 20),
+            child: Image.asset(Assets.tutorial2),
           ),
           Expanded(
             child: Center(
-              child: Text(
-                AppLocalizations.of(context).tutorialText2,
-                style: themeData.primaryTextTheme.body1
-                    .copyWith(color: Colors.white),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 5, left: 5),
+                child: Text(
+                  AppLocalizations.of(context).tutorialText2,
+                  style: themeData.primaryTextTheme.body1
+                      .copyWith(color: Colors.white),
+                ),
               ),
             ),
           ),
