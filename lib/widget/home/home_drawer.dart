@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:idea_note/config/assets.dart';
 import 'package:idea_note/config/route.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
@@ -14,9 +15,9 @@ class HomeDrawer extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              leading: const CircleAvatar(),
+              leading: Image.asset(Assets.avatar),
               title: Text(AppLocalizations.of(context).title),
-              subtitle: Text('${settingsModel.getVersion()}'
+              subtitle: Text('Version ${settingsModel.getVersion()}'
                   ':${settingsModel.getBuildNumber()}'),
             ),
             ListTile(

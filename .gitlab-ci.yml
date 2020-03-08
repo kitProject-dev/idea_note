@@ -4,13 +4,13 @@ stages:
   - deploy
 
 .flutter_docker_image:
-  image: kitproject/flutter:beta
+  image: kitproject/flutter:v1-13-6
   before_script:
-    - flutter version 1.14.6 --force
+    - flutter version 1.13.6 --force
 
 .flutter_sdk:
   before_script:
-    - flutter version 1.14.6 --force
+    - flutter version 1.13.6 --force
   tags:
     - mac-mini
 

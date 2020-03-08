@@ -6,7 +6,7 @@ import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/repository/setting/setting_repository.dart';
 import 'package:idea_note/screen/home_screen.dart';
-import 'package:idea_note/screen/initial_screen.dart';
+import 'package:idea_note/screen/tutorial_screen.dart';
 import 'package:idea_note/screen/edit_note_screen.dart';
 import 'package:idea_note/screen/view_note_screen.dart';
 import 'package:idea_note/screen/setting_title_screen.dart';
@@ -37,8 +37,8 @@ class App extends StatelessWidget {
         onGenerateRoute: (settings) {
           Widget widget;
           switch (settings.name) {
-            case RoutePath.initial:
-              widget = InitialScreen();
+            case RoutePath.tutorial:
+              widget = TutorialScreen();
               break;
             case RoutePath.home:
               widget = HomeScreen();

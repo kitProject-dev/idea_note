@@ -13,13 +13,17 @@ class AppLocalizations {
 
   static final Map<Locale, AppLocalizations_Labels> languages = {
     Locale.fromSubtags(languageCode: "ja"): AppLocalizations_Labels(
-      title: "Idea note",
+      title: "IdeaNote",
       setting: "設定",
       titleSetting: "タイトル設定",
       save: "保存",
       playCount: "カウント開始",
       stopCount: "カウント終了",
       changeTitle: "タイトル変更",
+      tutorialText1: "説明文をなにか書く",
+      tutorialText2: "説明文をなにか書く",
+      tutorialText3: "タイトルリストの設定をデフォルトから変更することができます。\n※あとからでも設定を変更できます。",
+      tutorialText4: "説明文をなにか書く",
       titleSettingHome: "2つのワードを設定していきます。",
       titleSettingSelectWords: "ワードセットを選んでください。",
       titleSettingEditableWords: "ワードを編集してください。",
@@ -30,6 +34,9 @@ class AppLocalizations {
       prev: "戻る",
       next: "次へ",
       done: "完了",
+      skip: "スキップ",
+      doSetting: "設定する",
+      addNote: "新しいノートを追加",
     ),
   };
 
@@ -48,6 +55,10 @@ class AppLocalizations_Labels {
       this.playCount,
       this.stopCount,
       this.changeTitle,
+      this.tutorialText1,
+      this.tutorialText2,
+      this.tutorialText3,
+      this.tutorialText4,
       this.titleSettingHome,
       this.titleSettingSelectWords,
       this.titleSettingEditableWords,
@@ -57,7 +68,10 @@ class AppLocalizations_Labels {
       this.word,
       this.prev,
       this.next,
-      this.done});
+      this.done,
+      this.skip,
+      this.doSetting,
+      this.addNote});
 
   final String title;
 
@@ -72,6 +86,14 @@ class AppLocalizations_Labels {
   final String stopCount;
 
   final String changeTitle;
+
+  final String tutorialText1;
+
+  final String tutorialText2;
+
+  final String tutorialText3;
+
+  final String tutorialText4;
 
   final String titleSettingHome;
 
@@ -92,4 +114,10 @@ class AppLocalizations_Labels {
   final String next;
 
   final String done;
+
+  final String skip;
+
+  final String doSetting;
+
+  final String addNote;
 }

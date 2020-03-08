@@ -4,11 +4,11 @@ import 'package:idea_note/entity/note.dart';
 import 'package:sembast/sembast.dart';
 
 class NoteRepository {
-  List<MapEntry<int, String>> _notes;
+  List<MapEntry<int, Note>> _notes;
   Database database;
   StoreRef _store;
 
-  List<String> get notes {
+  List<Note> get notes {
     if (_notes != null) {
       return _notes.map((f) => f.value).toList();
     } else {
@@ -29,8 +29,8 @@ class NoteRepository {
     _notes = [];
     final notes = await _store.query().getSnapshots(database);
     for (var note in notes) {
-      _notes.add(MapEntry(note.key as int,
-          Note.fromJson(note.value as Map<String, Object>).title));
+      _notes.add(MapEntry(
+          note.key as int, Note.fromJson(note.value as Map<String, Object>)));
     }
     return true;
   }
@@ -43,7 +43,7 @@ class NoteRepository {
 
   Future<void> addNote(Note note) async {
     final key = await _store.add(database, note.toJson()) as int;
-    _notes.add(MapEntry(key, note.title));
+    _notes.add(MapEntry(key, note));
   }
 
   Future<void> removeNote(int index) async {

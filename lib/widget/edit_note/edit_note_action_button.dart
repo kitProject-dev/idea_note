@@ -13,16 +13,19 @@ class EditNoteActionButton extends StatelessWidget {
       animatedIcon: AnimatedIcons.menu_close,
       children: [
         SpeedDialChild(
-          child: Icon(FontAwesomeIcons.save),
-          backgroundColor: Colors.red,
-          label: AppLocalizations.of(context).save,
-          onTap: () => Navigator.of(context).pop(editNoteModel.note),
-        ),
+            child: Icon(FontAwesomeIcons.save),
+            backgroundColor: Colors.blue[300],
+            label: AppLocalizations.of(context).save,
+            onTap: () {
+              editNoteModel.note.dateTime =
+                  DateTime.now().millisecondsSinceEpoch;
+              Navigator.of(context).pop(editNoteModel.note);
+            }),
         SpeedDialChild(
           child: Icon(editNoteModel.isRunning
               ? FontAwesomeIcons.stopCircle
               : FontAwesomeIcons.playCircle),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue[300],
           label: editNoteModel.isRunning
               ? AppLocalizations.of(context).stopCount
               : AppLocalizations.of(context).playCount,
@@ -34,7 +37,7 @@ class EditNoteActionButton extends StatelessWidget {
         ),
         SpeedDialChild(
           child: Icon(FontAwesomeIcons.book),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue[300],
           label: AppLocalizations.of(context).changeTitle,
           onTap: editNoteModel.changeTitle,
         ),

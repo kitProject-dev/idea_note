@@ -4,6 +4,9 @@ import 'package:idea_note/config/words.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/setting_title_model.dart';
 import 'package:idea_note/model/settings_model.dart';
+import 'package:idea_note/widget/setting_title/setting_title_content.dart';
+import 'package:idea_note/widget/setting_title/setting_title_double_button.dart';
+import 'package:idea_note/widget/setting_title/setting_title_result_list.dart';
 import 'package:provider/provider.dart';
 
 class SettingTitleResultPage extends StatelessWidget {
@@ -13,7 +16,6 @@ class SettingTitleResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = Theme.of(context);
     final settingsModel = Provider.of<SettingsModel>(context, listen: false);
     final settingTitleModel = Provider.of<SettingTitleModel>(context);
     return Container(
@@ -21,81 +23,44 @@ class SettingTitleResultPage extends StatelessWidget {
       child: Scrollbar(
         child: Column(
           children: [
-            Text(AppLocalizations.of(context).titleSettingResult),
+            SettingTitleContent(
+                AppLocalizations.of(context).titleSettingResult),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                      child: ListView.builder(
-                    itemCount: settingTitleModel.getWords(WordsType.a).length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Text(
-                              settingTitleModel.getWords(WordsType.a)[index],
-                              style: TextStyle(
-                                fontSize:
-                                    themeData.textTheme.bodyText2.fontSize,
-                              ),
-                            ),
-                          ));
-                    },
-                  )),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 2.5),
+                      child: SettingTitleResultList(
+                        settingTitleModel.getWords(WordsType.a),
+                      ),
+                    ),
+                  ),
                   Expanded(
-                      child: ListView.builder(
-                    itemCount: settingTitleModel.getWords(WordsType.b).length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Text(
-                              settingTitleModel.getWords(WordsType.b)[index],
-                              style: TextStyle(
-                                fontSize:
-                                    themeData.textTheme.bodyText2.fontSize,
-                              ),
-                            ),
-                          ));
-                    },
-                  ))
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 2.5, right: 5),
+                      child: SettingTitleResultList(
+                        settingTitleModel.getWords(WordsType.a),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  child: Text(AppLocalizations.of(context).prev,
-                      style: themeData.textTheme.button),
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    _pageController.previousPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease);
-                  },
-                ),
-                RaisedButton(
-                  child: Text(AppLocalizations.of(context).done,
-                      style: themeData.textTheme.button),
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    settingsModel.setWords(
-                        settingTitleModel.getWords(WordsType.a),
-                        settingTitleModel.getWords(WordsType.b));
-                    Navigator.of(context).pop(true);
-                  },
-                ),
-              ],
+            SettingTitleDoubleButton(
+              AppLocalizations.of(context).prev,
+              () {
+                _pageController.previousPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
+              AppLocalizations.of(context).done,
+              () {
+                settingsModel.setWords(settingTitleModel.getWords(WordsType.a),
+                    settingTitleModel.getWords(WordsType.b));
+                Navigator.of(context).pop(true);
+              },
             ),
           ],
         ),

@@ -7,3 +7,6 @@
 
 ## Create localization
 `rm lib/localization.g.dart && flutter clean && flutter pub get && flutter packages pub run build_runner build`
+
+## Create icon
+`flutter pub run flutter_launcher_icons:main`

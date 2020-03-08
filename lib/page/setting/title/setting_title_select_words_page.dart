@@ -4,6 +4,8 @@ import 'package:idea_note/config/words.dart';
 import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/setting_title_model.dart';
 import 'package:idea_note/model/settings_model.dart';
+import 'package:idea_note/widget/setting_title/setting_title_content.dart';
+import 'package:idea_note/widget/setting_title/setting_title_single_button.dart';
 import 'package:provider/provider.dart';
 
 class SettingTitleSelectWordsPage extends StatelessWidget {
@@ -28,21 +30,19 @@ class SettingTitleSelectWordsPage extends StatelessWidget {
       child: Scrollbar(
         child: Column(
           children: [
-            Text(AppLocalizations.of(context).titleSettingSelectWords),
+            SettingTitleContent(
+                AppLocalizations.of(context).titleSettingSelectWords),
             Expanded(
               child: ListView.builder(
                 itemCount: templates.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
+                  return Card(
                     child: InkWell(
                       child: Padding(
                         padding: const EdgeInsets.all(5),
                         child: Text(
                           templates.keys.toList()[index],
-                          style: TextStyle(
-                            fontSize: themeData.textTheme.bodyText2.fontSize,
-                          ),
+                          style: themeData.textTheme.body1,
                         ),
                       ),
                       onTap: () {
@@ -57,23 +57,13 @@ class SettingTitleSelectWordsPage extends StatelessWidget {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  child: Text(AppLocalizations.of(context).prev,
-                      style: themeData.textTheme.button),
-                  color: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  onPressed: () {
-                    _pageController.previousPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.ease);
-                  },
-                ),
-              ],
+            SettingTitleSingleButton(
+              AppLocalizations.of(context).prev,
+              () {
+                _pageController.previousPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.ease);
+              },
             ),
           ],
         ),

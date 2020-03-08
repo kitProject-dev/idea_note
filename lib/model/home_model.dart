@@ -11,7 +11,7 @@ class HomeModel with ChangeNotifier {
 
   final NoteRepository _noteRepository;
 
-  List<String> get notes => _noteRepository.notes;
+  List<Note> get notes => _noteRepository.notes;
 
   Future<void> addNote(Note note) async {
     await _noteRepository.addNote(note);
