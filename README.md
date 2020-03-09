@@ -5,6 +5,10 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://gitlab.com/kitProject/idea_note)
 
+## Trial Web service
+- [master](https://ideanote.kitproject.app)
+- [develop](https://ideanote-kitproject-debug.firebaseapp.com)
+
 ## Create localization
 `rm lib/localization.g.dart && flutter clean && flutter pub get && flutter packages pub run build_runner build`
 
