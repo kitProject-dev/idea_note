@@ -26,6 +26,10 @@ class _SplashScreen extends State<SplashScreen> {
       _isSplashTimeEnds = true;
       _openScreen();
     });
+    _loading().then((_) {
+      _isLoadFinished = true;
+      _openScreen();
+    });
     super.initState();
   }
 
@@ -37,10 +41,6 @@ class _SplashScreen extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _loading().then((_) {
-      _isLoadFinished = true;
-      _openScreen();
-    });
     return Container(
       color: Colors.white,
       child: Center(
