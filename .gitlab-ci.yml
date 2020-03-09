@@ -145,7 +145,7 @@ deploy_web_production:
   extends: .flutter_sdk
   stage: deploy
   script:
-    - firebase production -P develop -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting
+    - firebase deploy -P production -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --token ${FIREBASE_TOKEN} --only hosting
   dependencies:
     - archive_web_production
   only:
