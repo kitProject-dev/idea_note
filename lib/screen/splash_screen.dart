@@ -60,14 +60,9 @@ class _SplashScreen extends State<SplashScreen> {
   }
 
   Future<void> _upgradeApp(num oldVersion, int newVersion) async {
-    print('Old app version: ${oldVersion.toString()}');
-    print('New app version: ${newVersion.toString()}');
     final noteRepository = Provider.of<NoteRepository>(context, listen: false);
-    await noteRepository.initialize(Config.dbVersion,
-        (db, oldVersion, newVersion) {
-      print('Old db version: ${oldVersion.toString()}');
-      print('New db version: ${newVersion.toString()}');
-    });
+    await noteRepository.initialize(
+        Config.dbVersion, (db, oldVersion, newVersion) {});
   }
 
   void _openScreen() {
