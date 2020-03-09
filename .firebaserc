@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "ideanote-kitproject-debug"
+    "default": "ideanote-kitproject-debug",
+    "develop": "ideanote-kitproject-debug",
+    "production": "ideanote-kitproject"
   }
 }
