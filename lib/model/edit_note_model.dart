@@ -47,11 +47,9 @@ class EditNoteModel with ChangeNotifier {
     });
     if (index == -1) {
       _note = Note(_createTitle(), '');
-      notifyListeners();
       return true;
     }
     _note = await _noteRepository.loadNote(index);
-    notifyListeners();
     return true;
   }
 
@@ -69,7 +67,6 @@ class EditNoteModel with ChangeNotifier {
     _isRunning = false;
     _stopwatch.stop();
   }
-
 
   String _createTitle() {
     final _wordsA = _settingsModel.getWords(WordsType.a).toList()
