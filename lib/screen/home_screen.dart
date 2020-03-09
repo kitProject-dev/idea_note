@@ -21,8 +21,8 @@ class HomeScreen extends StatelessWidget {
             ? Container()
             : MultiProvider(
                 providers: [
-                  ChangeNotifierProvider<HomeModel>.value(
-                    value: HomeModel(noteRepository),
+                  ChangeNotifierProvider<HomeModel>(
+                    create: (context) => HomeModel(noteRepository),
                   ),
                 ],
                 child: Scaffold(
