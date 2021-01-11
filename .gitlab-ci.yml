@@ -6,11 +6,11 @@ stages:
 .flutter_docker_image:
   image: kitproject/flutter:beta
   before_script:
-    - flutter version 1.25.0-8.2.pre --force
+    - flutter version 1.25.0-8.1.pre --force
 
 .flutter_sdk:
   before_script:
-    - flutter version 1.25.0-8.2.pre --force
+    - flutter version 1.25.0-8.1.pre --force
   tags:
     - mac-mini
 
