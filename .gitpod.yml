@@ -1,6 +1,8 @@
-image: kitproject/gitpod-flutter:beta
+image: kitproject/gitpod-flutter
 tasks:
   - init: >
+      sudo apt-get update && sudo apt-get upgrade -y && \
+      flutter channel beta && flutter upgrade && flutter config --enable-web
       flutter pub get
     command: >
       flutter run --web-port=8080 --web-hostname=0.0.0.0 --target="lib/main_web.dart" -v
