@@ -5,7 +5,7 @@ version: 0.1.1+1001
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
-  flutter: "1.13.6"
+  flutter: "1.25.0-8.2.pre"
 
 dependencies:
   flutter:
@@ -13,7 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  intl: ^0.16.0
+  intl: ^0.17.0-nullsafety.2
   flutter_sheet_localization: ^1.0.0
   font_awesome_flutter: ^8.7.0
   provider: ^4.0.4
