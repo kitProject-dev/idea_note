@@ -1,4 +1,4 @@
-image: kitproject/gitpod-flutter
+image: kitproject/gitpod-flutter:v1.24.0-10.2.pre
 tasks:
   - init: >
       sudo apt-get update && sudo apt-get upgrade -y && 
