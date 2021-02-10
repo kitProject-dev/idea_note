@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/config/assets.dart';
 import 'package:idea_note/config/route.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:provider/provider.dart';
 

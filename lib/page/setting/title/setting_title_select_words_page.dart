@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/config/words.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/setting_title_model.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/widget/setting_title/setting_title_content.dart';

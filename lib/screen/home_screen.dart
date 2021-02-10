@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idea_note/localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/model/home_model.dart';
 import 'package:idea_note/repository/note/note_repository.dart';
 import 'package:idea_note/widget/home/home_action_button.dart';
