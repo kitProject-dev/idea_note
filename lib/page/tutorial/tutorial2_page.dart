@@ -25,7 +25,7 @@ class Tutorial2Page extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 5, left: 5),
                 child: Text(
                   AppLocalizations.of(context).tutorialText2,
-                  style: themeData.primaryTextTheme.body1
+                  style: themeData.primaryTextTheme.bodyText2
                       .copyWith(color: Colors.white),
                 ),
               ),
@@ -36,7 +36,7 @@ class Tutorial2Page extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 const Spacer(),
-                FlatButton(
+                TextButton(
                   child: Text(
                     AppLocalizations.of(context).next,
                     style: themeData.textTheme.button

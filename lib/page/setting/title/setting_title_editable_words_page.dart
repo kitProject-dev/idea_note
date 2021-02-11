@@ -32,7 +32,7 @@ class SettingTitleEditableWordsPage extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(5),
                     child: TextFormField(
-                      style: themeData.textTheme.body1,
+                      style: themeData.textTheme.bodyText2,
                       initialValue: words[index],
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),

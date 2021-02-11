@@ -48,9 +48,9 @@ class _EditNoteBodyBodyState extends State<EditNoteBody> {
                 focusNode: _focus,
                 autofocus: true,
                 maxLines: null,
-                style: themeData.textTheme.body1,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(5),
+                style: themeData.textTheme.bodyText2,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.all(5),
                   border: InputBorder.none,
                   isDense: true,
                 ),

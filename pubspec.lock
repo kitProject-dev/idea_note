@@ -376,7 +376,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: b5680c2e15ee3c05f1816ffeb4767eee3543df12
+      resolved-ref: "72c3726da6eaaa1babe0b58b93e4c6324e706de2"
       url: "https://gitlab.com/kitProject/package_info_wrapper.git"
     source: git
     version: "0.0.1"

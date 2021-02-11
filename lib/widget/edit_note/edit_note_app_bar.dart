@@ -4,10 +4,9 @@ import 'package:idea_note/model/edit_note_model.dart';
 import 'package:provider/provider.dart';
 
 class EditNoteAppBar extends StatelessWidget implements PreferredSizeWidget {
-  EditNoteAppBar() : preferredSize = Size.fromHeight(kToolbarHeight);
 
   @override
-  final Size preferredSize;
+  final Size preferredSize = const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {

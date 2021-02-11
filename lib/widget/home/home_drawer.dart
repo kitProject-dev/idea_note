@@ -21,7 +21,7 @@ class HomeDrawer extends StatelessWidget {
                   ':${settingsModel.getBuildNumber()}'),
             ),
             ListTile(
-              leading: Icon(FontAwesomeIcons.cog),
+              leading: const Icon(FontAwesomeIcons.cog),
               title: Text(AppLocalizations.of(context).titleSetting),
               onTap: () {
                 Navigator.of(context).pop();

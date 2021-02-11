@@ -13,7 +13,7 @@ class EditNoteActionButton extends StatelessWidget {
       animatedIcon: AnimatedIcons.menu_close,
       children: [
         SpeedDialChild(
-            child: Icon(FontAwesomeIcons.save),
+            child: const Icon(FontAwesomeIcons.save),
             backgroundColor: Colors.blue[300],
             label: AppLocalizations.of(context).save,
             onTap: () {
@@ -36,7 +36,7 @@ class EditNoteActionButton extends StatelessWidget {
           },
         ),
         SpeedDialChild(
-          child: Icon(FontAwesomeIcons.book),
+          child: const Icon(FontAwesomeIcons.book),
           backgroundColor: Colors.blue[300],
           label: AppLocalizations.of(context).changeTitle,
           onTap: editNoteModel.changeTitle,

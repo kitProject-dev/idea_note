@@ -18,7 +18,7 @@ class SettingTitleHomePage extends StatelessWidget {
           Expanded(
             child: Center(
               child: Text(AppLocalizations.of(context).titleSettingHome,
-                  style: themeData.textTheme.body1),
+                  style: themeData.textTheme.bodyText2),
             ),
           ),
           SettingTitleSingleButton(

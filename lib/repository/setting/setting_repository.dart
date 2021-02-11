@@ -30,7 +30,7 @@ class SettingRepository {
     }
   }
 
-  dynamic getValue(String key) {
+  Object getValue(String key) {
     if (_sharedPreferences == null) {
       throw StateError('Not initialize setting');
     }

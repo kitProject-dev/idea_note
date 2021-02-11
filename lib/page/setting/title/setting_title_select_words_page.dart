@@ -42,7 +42,7 @@ class SettingTitleSelectWordsPage extends StatelessWidget {
                         padding: const EdgeInsets.all(5),
                         child: Text(
                           templates.keys.toList()[index],
-                          style: themeData.textTheme.body1,
+                          style: themeData.textTheme.bodyText2,
                         ),
                       ),
                       onTap: () {

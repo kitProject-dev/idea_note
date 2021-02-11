@@ -12,28 +12,24 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
-  intl: ^0.17.0-nullsafety.2
-  font_awesome_flutter: ^9.0.0-nullsafety
-  provider: ^5.0.0-nullsafety.3
-  shared_preferences: ^2.0.0-nullsafety
-  sembast: ^3.0.0-nullsafety.4
-  sembast_web: ^2.0.0-nullsafety.1
-
   flutter_speed_dial: ^2.1.1
-  smooth_page_indicator: ^0.2.0
-
-  path_provider: ^2.0.0-nullsafety
+  font_awesome_flutter: ^9.0.0-nullsafety
+  intl: ^0.17.0-nullsafety.2
   package_info_wrapper:
     git: https://gitlab.com/kitProject/package_info_wrapper.git
+  path_provider: ^2.0.0-nullsafety
+  provider: ^5.0.0-nullsafety.3
+  sembast: ^3.0.0-nullsafety.4
+  sembast_web: ^2.0.0-nullsafety.1
+  shared_preferences: ^2.0.0-nullsafety
+  smooth_page_indicator: ^0.2.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  pedantic: ^1.10.0
   build_runner: ^1.11.1
   flutter_launcher_icons: ^0.8.1
+  flutter_test:
+    sdk: flutter
+  pedantic: ^1.10.0
 
 dependency_overrides:
   pedantic: ^1.10.0
