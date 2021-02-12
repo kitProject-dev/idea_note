@@ -1,0 +1,100 @@
+{
+  "@@locale": "en",
+
+  "title": "IdeaNote",
+      "@title": {
+        "description": ""
+      },
+  "setting": "Settings",
+      "@setting": {
+        "description": ""
+      },
+  "titleSetting": "Title setting",
+      "@titleSetting": {
+        "description": ""
+      },
+  "save": "Save",
+      "@save": {
+        "description": ""
+      },
+  "playCount": "Start counting",
+      "@playCount": {
+        "description": ""
+      },
+  "stopCount": "Stop counting",
+      "@stopCount": {
+        "description": ""
+      },
+  "changeTitle": "Change title",
+      "@changeTitle": {
+        "description": ""
+      },
+  "tutorialText1": "A notebook app for discovering new ideas.",
+      "@tutorialText1": {
+        "description": ""
+      },
+  "tutorialText2": "Automatically selects two words and allows you to think of ideas.",
+      "@tutorialText2": {
+        "description": ""
+      },
+  "tutorialText3": "You can change the settings of the word list from the default.\n※You can change the settings later.",
+      "@tutorialText3": {
+        "description": ""
+      },
+  "tutorialText4": "Let's try it for real!!",
+      "@tutorialText4": {
+        "description": ""
+      },
+  "titleSettingHome": "Set up a two-word list.",
+      "@titleSettingHome": {
+        "description": ""
+      },
+  "titleSettingSelectWords": "Choose a word set.",
+      "@titleSettingSelectWords": {
+        "description": ""
+      },
+  "titleSettingEditableWords": "Edit the word.",
+      "@titleSettingEditableWords": {
+        "description": ""
+      },
+  "titleSettingResult": "Check the word.",
+      "@titleSettingResult": {
+        "description": ""
+      },
+  "set": "Set it up",
+      "@set": {
+        "description": ""
+      },
+  "modifyCurrentSettings": "Modify the current settings",
+      "@modifyCurrentSettings": {
+        "description": ""
+      },
+  "word": "Word",
+      "@word": {
+        "description": ""
+      },
+  "prev": "Return",
+      "@prev": {
+        "description": ""
+      },
+  "next": "Next",
+      "@next": {
+        "description": ""
+      },
+  "done": "Done",
+      "@done": {
+        "description": ""
+      },
+  "skip": "Skip",
+      "@skip": {
+        "description": ""
+      },
+  "doSetting": "Set it up",
+      "@doSetting": {
+        "description": ""
+      },
+  "addNote": "Add a new note",
+      "@addNote": {
+        "description": ""
+      }
+}

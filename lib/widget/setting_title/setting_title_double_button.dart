@@ -17,12 +17,12 @@ class SettingTitleDoubleButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          OutlineButton(
+          OutlinedButton(
             child: Text(_text1, style: themeData.textTheme.button),
             onPressed: _onPressed1,
           ),
           const Spacer(),
-          OutlineButton(
+          OutlinedButton(
             child: Text(_text2, style: themeData.textTheme.button),
             onPressed: _onPressed2,
           ),

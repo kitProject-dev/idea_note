@@ -1,0 +1,28 @@
+{
+  "@@locale": "ja",
+
+  "title": "IdeaNote",
+  "setting": "設定",
+  "titleSetting": "タイトル設定",
+  "save": "保存",
+  "playCount": "カウント開始",
+  "stopCount": "カウント終了",
+  "changeTitle": "タイトル変更",
+  "tutorialText1": "新しいアイディアを発掘するためのノートアプリです。",
+  "tutorialText2": "自動でワードを2つ選出し、アイディアを考えることができます。",
+  "tutorialText3": "ワードリストの設定をデフォルトから変更することができます。\n※あとからでも設定を変更できます。",
+  "tutorialText4": "実際に使ってみましょう！",
+  "titleSettingHome": "2つのワードリストを設定します。",
+  "titleSettingSelectWords": "ワードセットを選んでください。",
+  "titleSettingEditableWords": "ワードを編集してください。",
+  "titleSettingResult": "ワードを確認してください。",
+  "set": "設定する",
+  "modifyCurrentSettings": "現在の設定値を修正",
+  "word": "Word",
+  "prev": "戻る",
+  "next": "次へ",
+  "done": "完了",
+  "skip": "スキップ",
+  "doSetting": "設定する",
+  "addNote": "新しいノートを追加"
+}

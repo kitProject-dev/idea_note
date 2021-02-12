@@ -82,17 +82,19 @@ class SettingsModel with ChangeNotifier {
   List<String> getWords(WordsType wordsType) {
     switch (wordsType) {
       case WordsType.a:
-        final wordsA = _settingRepository.getValue(PreferencesKey.wordsA);
+        final wordsA =
+            _settingRepository.getValue(PreferencesKey.wordsA) as List<String>;
         if (wordsA != null) {
-          return wordsA.cast<String>().toList() as List<String>;
+          return wordsA;
         } else {
           return Words.defaultA;
         }
         break;
       case WordsType.b:
-        final wordsB = _settingRepository.getValue(PreferencesKey.wordsB);
+        final wordsB =
+            _settingRepository.getValue(PreferencesKey.wordsB) as List<String>;
         if (wordsB != null) {
-          return wordsB.cast<String>().toList() as List<String>;
+          return wordsB;
         } else {
           return Words.defaultB;
         }

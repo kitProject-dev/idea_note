@@ -23,7 +23,7 @@ class SettingTitleResultList extends StatelessWidget {
                 child: Text(
                   _resultList[index],
                   style: TextStyle(
-                    fontSize: themeData.textTheme.body1.fontSize,
+                    fontSize: themeData.textTheme.bodyText2.fontSize,
                   ),
                 ),
               ));
