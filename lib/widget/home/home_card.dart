@@ -22,14 +22,14 @@ class HomeCard extends StatelessWidget {
           child: ListTile(
             title: Text(
               _note.title,
-              style: themeData.textTheme.subtitle,
+              style: themeData.textTheme.subtitle2,
             ),
             subtitle: Text(
               DateFormat('yyyy/MM/dd(E) HH:mm',
                       Localizations.localeOf(context).languageCode)
                   .format(DateTime.fromMillisecondsSinceEpoch(_note.dateTime)),
-              style:
-                  themeData.textTheme.body1.copyWith(color: Colors.grey[500]),
+              style: themeData.textTheme.bodyText2
+                  .copyWith(color: Colors.grey[500]),
             ),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/edit_note_model.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ class EditNoteActionButton extends StatelessWidget {
       animatedIcon: AnimatedIcons.menu_close,
       children: [
         SpeedDialChild(
-            child: Icon(FontAwesomeIcons.save),
+            child: const Icon(FontAwesomeIcons.save),
             backgroundColor: Colors.blue[300],
             label: AppLocalizations.of(context).save,
             onTap: () {
@@ -36,7 +36,7 @@ class EditNoteActionButton extends StatelessWidget {
           },
         ),
         SpeedDialChild(
-          child: Icon(FontAwesomeIcons.book),
+          child: const Icon(FontAwesomeIcons.book),
           backgroundColor: Colors.blue[300],
           label: AppLocalizations.of(context).changeTitle,
           onTap: editNoteModel.changeTitle,

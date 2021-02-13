@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/config/route.dart';
 import 'package:idea_note/config/theme.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:idea_note/repository/setting/setting_repository.dart';
-import 'package:idea_note/screen/home_screen.dart';
-import 'package:idea_note/screen/tutorial_screen.dart';
 import 'package:idea_note/screen/edit_note_screen.dart';
-import 'package:idea_note/screen/view_note_screen.dart';
+import 'package:idea_note/screen/home_screen.dart';
 import 'package:idea_note/screen/setting_title_screen.dart';
 import 'package:idea_note/screen/settings_screen.dart';
 import 'package:idea_note/screen/splash_screen.dart';
+import 'package:idea_note/screen/tutorial_screen.dart';
+import 'package:idea_note/screen/view_note_screen.dart';
 import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
@@ -26,12 +25,8 @@ class App extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        localizationsDelegates: [
-          const AppLocalizationsDelegate(),
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.languages.keys.toList(),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         onGenerateTitle: (context) => AppLocalizations.of(context).title,
         theme: appTheme,
         onGenerateRoute: (settings) {

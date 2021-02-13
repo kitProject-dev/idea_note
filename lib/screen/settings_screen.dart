@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:idea_note/localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/widget/my_app_bar.dart';
 
 class SettingsScreen extends StatelessWidget {

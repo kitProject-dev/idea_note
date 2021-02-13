@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:idea_note/localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/widget/setting_title/setting_title_single_button.dart';
 
 class SettingTitleHomePage extends StatelessWidget {
@@ -18,7 +18,7 @@ class SettingTitleHomePage extends StatelessWidget {
           Expanded(
             child: Center(
               child: Text(AppLocalizations.of(context).titleSettingHome,
-                  style: themeData.textTheme.body1),
+                  style: themeData.textTheme.bodyText2),
             ),
           ),
           SettingTitleSingleButton(

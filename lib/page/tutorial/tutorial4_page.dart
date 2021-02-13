@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:idea_note/config/route.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +20,7 @@ class Tutorial4Page extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 5, left: 5),
                 child: Text(
                   AppLocalizations.of(context).tutorialText4,
-                  style: themeData.primaryTextTheme.title
+                  style: themeData.primaryTextTheme.headline6
                       .copyWith(color: Colors.white),
                 ),
               ),
@@ -31,7 +31,7 @@ class Tutorial4Page extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 const Spacer(),
-                FlatButton(
+                TextButton(
                   child: Text(
                     AppLocalizations.of(context).done,
                     style: themeData.textTheme.button

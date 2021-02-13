@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:idea_note/config/assets.dart';
 import 'package:idea_note/config/route.dart';
-import 'package:idea_note/localization.dart';
 import 'package:idea_note/model/settings_model.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +21,7 @@ class HomeDrawer extends StatelessWidget {
                   ':${settingsModel.getBuildNumber()}'),
             ),
             ListTile(
-              leading: Icon(FontAwesomeIcons.cog),
+              leading: const Icon(FontAwesomeIcons.cog),
               title: Text(AppLocalizations.of(context).titleSetting),
               onTap: () {
                 Navigator.of(context).pop();

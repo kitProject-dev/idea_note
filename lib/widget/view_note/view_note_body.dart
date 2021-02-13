@@ -17,7 +17,7 @@ class ViewNoteBody extends StatelessWidget {
             padding: const EdgeInsets.all(5),
             child: Text(
               viewNoteModel.note.content,
-              style: themeData.textTheme.body1,
+              style: themeData.textTheme.bodyText2,
             ),
           ),
         ),

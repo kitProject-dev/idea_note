@@ -12,7 +12,7 @@ class SettingTitleContent extends StatelessWidget {
       padding: const EdgeInsets.only(top: 30, bottom: 30),
       child: Text(
           _content,
-          style: themeData.textTheme.body1),
+          style: themeData.textTheme.bodyText2),
     );
   }
 }
